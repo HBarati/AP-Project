@@ -7,15 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class Classes extends AppCompatActivity {
+public class JoinClass extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("CLASSES");
-        setContentView(R.layout.activity_classes);
-
-        Toast.makeText(this, "Welcome IN", Toast.LENGTH_SHORT).show();
+        getSupportActionBar().setTitle("JOIN CLASS");
+        setContentView(R.layout.activity_join_class);
     }
 
     @Override
@@ -26,21 +24,16 @@ public class Classes extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.Refresh_Classes_Item) {
+        if (item.getItemId()==R.id.Join){
+            Toast.makeText(this, "Joining", Toast.LENGTH_SHORT).show();
+        }
+        if (item.getItemId()==R.id.Refresh_JoinClass_Item){
             Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
         }
-        if (item.getItemId()==R.id.AboutUs_Classes_Item){
-            Intent intent2 = new Intent(Classes.this, AboutUs.class);
-            startActivity(intent2);
-        }
-        if (item.getItemId()==R.id.CreateClass_Classes_Item){
-            Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
-        }
-        if (item.getItemId()==R.id.JoinClass_Classes_Item){
-            Intent intent7 = new Intent(Classes.this, JoinClass.class);
-            startActivity(intent7);
+        if (item.getItemId()==R.id.AboutUs_JoinClass_Item){
+            Intent intent6 = new Intent(JoinClass.this, AboutUs.class);
+            startActivity(intent6);
         }
         return super.onOptionsItemSelected(item);
     }
 }
-

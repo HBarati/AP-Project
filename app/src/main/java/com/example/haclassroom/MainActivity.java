@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //////// Alert Empty
-        this.name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (MainActivity.this.name.getText().toString().trim().equals("")) {
