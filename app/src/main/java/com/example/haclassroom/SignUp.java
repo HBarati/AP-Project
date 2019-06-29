@@ -17,12 +17,13 @@ public class SignUp extends AppCompatActivity {
     TextView name ;
     TextView pass;
     Button SignUpButton;
-    int success;
+    static String successSignUp;
     Button SignUp_Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("SIGN UP");
         setContentView(R.layout.activity_sign_up);
 
         name = findViewById(R.id.Signup_Name);
@@ -55,11 +56,18 @@ public class SignUp extends AppCompatActivity {
         SignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent5 = new Intent(SignUp.this, Classes.class);
-                startActivity(intent5);
+                if (successSignUp=="1") {
+                    Intent intent5 = new Intent(SignUp.this, Classes.class);
+                    startActivity(intent5);
+                }
             }
         });
     }
 
+    public void SendSignUp(View v){
+        MassegeSender massegeSender = new MassegeSender();
+        String Sending = "SignUp:"+name+":"+pass;
+        massegeSender.execute(Sending);
+    }
 
 }

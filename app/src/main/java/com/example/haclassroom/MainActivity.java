@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
     TextView pass;
     Button logInButton;
     Button SignUpButton;
-    int success;
-
+    static String success;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("LOG IN");
         setContentView(R.layout.activity_main);
 
         Toast.makeText(this, "Welcome to your application!!", Toast.LENGTH_SHORT).show();
@@ -42,30 +42,15 @@ public class MainActivity extends AppCompatActivity {
         String Name = name.getText().toString();
         String Pass = pass.getText().toString();
 
-        ///////Server
-        try {
-            Socket socket = new Socket("192.168.0.1", 5001);
-            PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-            Scanner scanner = new Scanner(socket.getInputStream());
-
-            printWriter.write("Log In " + Name + " " + Pass);
-            printWriter.flush();
-//            success = scanner.nextInt();
-            success = 1;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ///////////////////
-
         logInButton = findViewById(R.id.button);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logInButton.setText("Loging IN");
-//                if (success==1) {
+                if (success=="1") {
                 Intent intent = new Intent(MainActivity.this, Classes.class);
                 startActivity(intent);
-//                }
+                }
             }
         });
         SignUpButton = findViewById(R.id.SignUp_button);
@@ -78,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //////// Alert Empty
-        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        this.name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (name.getText().toString().trim().equals("")) {
-                    name.setError("Please enter username");
+                if (MainActivity.this.name.getText().toString().trim().equals("")) {
+                    MainActivity.this.name.setError("Please enter username");
                 }
             }
         });
@@ -96,4 +81,11 @@ public class MainActivity extends AppCompatActivity {
         });
         /////////////////////
     }
+    ///////Server
+    public void Send(View v){
+        MassegeSender massegeSender = new MassegeSender();
+        String Sending = "SignUp:"+name+":"+pass;
+        massegeSender.execute(Sending);
+    }
+    //////////////
 }

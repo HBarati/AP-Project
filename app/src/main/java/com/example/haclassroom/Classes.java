@@ -12,6 +12,7 @@ public class Classes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("CLASSES");
         setContentView(R.layout.activity_classes);
 
         Toast.makeText(this, "Welcome IN", Toast.LENGTH_SHORT).show();
