@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
             printWriter.write("Log In " + Name + " " + Pass);
             printWriter.flush();
-//            success = scannt1er.nextInt();
+//            success = scanner.nextInt();
             success = 1;
         } catch (IOException e) {
             e.printStackTrace();
