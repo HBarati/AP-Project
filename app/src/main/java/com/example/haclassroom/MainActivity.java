@@ -21,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
         logInButton.setText("Log IN");
     }
 
-    TextView textView ;
-    TextView pass ;
+    TextView name;
+    TextView pass;
     Button logInButton;
-    int success ;
+    Button SignUpButton;
+    int success;
 
 
     @Override
@@ -34,37 +35,65 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Welcome to your application!!", Toast.LENGTH_SHORT).show();
 
-        textView = findViewById(R.id.Name);
+        name = findViewById(R.id.Name);
         pass = findViewById(R.id.Password);
 
-        textView.setTextColor(Color.rgb(00,00,00));
-        String name = textView.getText().toString();
+        name.setTextColor(Color.rgb(00, 00, 00));
+        String Name = name.getText().toString();
         String Pass = pass.getText().toString();
 
-        try{
+        ///////Server
+        try {
             Socket socket = new Socket("192.168.0.1", 5001);
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
             Scanner scanner = new Scanner(socket.getInputStream());
 
-            printWriter.write("Log In "+name+" "+Pass);
+            printWriter.write("Log In " + Name + " " + Pass);
             printWriter.flush();
-            success = scanner.nextInt();
-        }catch (IOException e){
+//            success = scannt1er.nextInt();
+            success = 1;
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        ///////////////////
 
         logInButton = findViewById(R.id.button);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logInButton.setText("Loging IN");
-                if (success==1) {
-                    Intent intent = new Intent(MainActivity.this, Classes.class);
-                    startActivity(intent);
-                }
+//                if (success==1) {
+                Intent intent = new Intent(MainActivity.this, Classes.class);
+                startActivity(intent);
+//                }
+            }
+        });
+        SignUpButton = findViewById(R.id.SignUp_button);
+        SignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(MainActivity.this, SignUp.class);
+                startActivity(intent3);
             }
         });
 
+        //////// Alert Empty
+        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (name.getText().toString().trim().equals("")) {
+                    name.setError("Please enter username");
+                }
+            }
+        });
+        pass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (pass.getText().toString().trim().equals("")) {
+                    pass.setError("Please enter password");
+                }
+            }
+        });
+        /////////////////////
     }
-
 }

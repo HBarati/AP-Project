@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Classes"
+        android:gravity="center"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
