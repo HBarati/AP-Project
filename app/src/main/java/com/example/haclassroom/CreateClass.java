@@ -50,7 +50,7 @@ public class CreateClass extends AppCompatActivity {
     //////////////Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_classes,menu);
+        getMenuInflater().inflate(R.menu.classes_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 

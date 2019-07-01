@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         pass = findViewById(R.id.Password);
 
         name.setTextColor(Color.rgb(00, 00, 00));
-        String Name = name.getText().toString();
+        final String Name = name.getText().toString();
         String Pass = pass.getText().toString();
 
         logInButton = findViewById(R.id.button);
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 logInButton.setText("Loging IN");
                 if (success=="1") {
                 Intent intent = new Intent(MainActivity.this, Classes.class);
+                intent.putExtra("UserName", Name);
                 startActivity(intent);
                 }
             }

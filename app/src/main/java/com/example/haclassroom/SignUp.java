@@ -29,7 +29,7 @@ public class SignUp extends AppCompatActivity {
         name = findViewById(R.id.Signup_Name);
         pass = findViewById(R.id.Signup_password);
 
-        String Name = name.getText().toString();
+        final String Name = name.getText().toString();
         String Pass = pass.getText().toString();
 
         //////// Alert Empty
@@ -58,6 +58,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 if (successSignUp=="1") {
                     Intent intent5 = new Intent(SignUp.this, Classes.class);
+                    intent5.putExtra("UserName", Name);
                     startActivity(intent5);
                 }
             }
