@@ -22,6 +22,12 @@ public class CreateClass extends AppCompatActivity {
         getSupportActionBar().setTitle("CREATE CLASS");
         setContentView(R.layout.activity_create_class);
 
+        ////////////back button
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        ///////////////////////
+
         className = findViewById(R.id.ClassName);
         section = findViewById(R.id.Section);
         room = findViewById(R.id.Room);
@@ -70,7 +76,14 @@ public class CreateClass extends AppCompatActivity {
             Intent intent8 = new Intent(CreateClass.this, AboutUs.class);
             startActivity(intent8);
         }
+        /////back Button
+        if (item.getItemId() == android.R.id.home){
+            finish();
+        }
+        ///////////////
         return super.onOptionsItemSelected(item);
     }
     ////////////////////
+
+
 }

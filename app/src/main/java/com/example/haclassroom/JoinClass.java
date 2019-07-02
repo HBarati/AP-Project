@@ -14,6 +14,13 @@ public class JoinClass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("JOIN CLASS");
         setContentView(R.layout.activity_join_class);
+
+        ////////////back button
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        ///////////////////////
+
     }
 
     @Override
@@ -34,6 +41,11 @@ public class JoinClass extends AppCompatActivity {
             Intent intent6 = new Intent(JoinClass.this, AboutUs.class);
             startActivity(intent6);
         }
+        /////back Button
+        if (item.getItemId() == android.R.id.home){
+            finish();
+        }
+        ///////////////
         return super.onOptionsItemSelected(item);
     }
 }

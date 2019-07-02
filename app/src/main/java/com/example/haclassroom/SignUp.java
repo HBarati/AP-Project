@@ -1,16 +1,18 @@
 package com.example.haclassroom;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Scanner;
+import java.io.File;
 
 public class SignUp extends AppCompatActivity {
 
@@ -19,6 +21,7 @@ public class SignUp extends AppCompatActivity {
     Button SignUpButton;
     static String successSignUp;
     Button SignUp_Button;
+    ImageView SignUP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,22 @@ public class SignUp extends AppCompatActivity {
 
         final String Name = name.getText().toString();
         String Pass = pass.getText().toString();
+        SignUP = findViewById(R.id.SignUp_imageView);
+        SignUP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent9 = new Intent(Intent.ACTION_GET_CONTENT);
+                intent9.addCategory(intent9.CATEGORY_OPENABLE);
+                intent9.setType("image/*");
+                startActivityForResult(intent9.createChooser(intent9,"Choose a picture:"), 1);
+            }
+        });
+
+        ////////////back button
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        ///////////////////////
 
         //////// Alert Empty
         name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -65,10 +84,55 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+    ////////////back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    ///////////////////////
+
     public void SendSignUp(View v){
         MassegeSender massegeSender = new MassegeSender();
         String Sending = "SignUp:"+name+":"+pass;
         massegeSender.execute(Sending);
     }
+
+    //////image
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            if (requestCode == 1){
+                Uri imageUri = data.getData();
+                final String path = getPathFromURI(imageUri);
+                if (path != null){
+                    File file = new File(path);
+                    imageUri = Uri.fromFile(file);
+                }
+
+                SignUP.setImageURI(imageUri);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public String getPathFromURI(Uri contenturi){
+        String res = null;
+        String[] project = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contenturi,project,null,null,null);
+        if (cursor.moveToFirst()){
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            res = cursor.getString(column_index);
+        }
+        cursor.close();
+        return res;
+    }
+    ///////////
 
 }

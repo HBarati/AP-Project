@@ -14,6 +14,13 @@ public class AboutUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("ABOUT US");
         setContentView(R.layout.activity_about_us);
+
+        ////////////back button
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        ///////////////////////
+        
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,6 +39,11 @@ public class AboutUs extends AppCompatActivity {
             Intent intent4 = new Intent(AboutUs.this, Classes.class);
             startActivity(intent4);
         }
+        /////back Button
+        if (item.getItemId() == android.R.id.home){
+            finish();
+        }
+        ///////////////
         return super.onOptionsItemSelected(item);
     }
 }
