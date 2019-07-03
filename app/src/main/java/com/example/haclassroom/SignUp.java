@@ -23,6 +23,7 @@ public class SignUp extends AppCompatActivity {
     Button SignUp_Button;
     ImageView SignUP;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
