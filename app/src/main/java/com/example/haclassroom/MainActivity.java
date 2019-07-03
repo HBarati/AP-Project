@@ -40,18 +40,18 @@ public class MainActivity extends AppCompatActivity {
 
         name.setTextColor(Color.rgb(00, 00, 00));
         final String Name = name.getText().toString();
-        String Pass = pass.getText().toString();
+        final String Pass = pass.getText().toString();
 
         logInButton = findViewById(R.id.button);
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logInButton.setText("Loging IN");
-                if (success=="1") {
-                Intent intent = new Intent(MainActivity.this, Classes.class);
-                intent.putExtra("UserName", Name);
-                startActivity(intent);
-                }
+//                if (success=="1") {
+                Intent intent15 = new Intent(MainActivity.this, Classes.class);
+//                intent15.putExtra("UserName", Name);
+                startActivity(intent15);
+//                }
             }
         });
         SignUpButton = findViewById(R.id.SignUp_button);

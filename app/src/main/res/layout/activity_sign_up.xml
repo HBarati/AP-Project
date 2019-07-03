@@ -13,7 +13,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="70dp"
         android:layout_marginLeft="145dp"
-        app:srcCompat="@drawable/SignInPicImage" />
+        app:srcCompat="@drawable/signinpicimage" />
 
     <EditText
         android:id="@+id/Signup_Name"
