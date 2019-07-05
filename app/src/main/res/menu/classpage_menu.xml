@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Classes_Classpage_Item"
+        android:title="Classes" />
+    <item
+        android:id="@+id/Refresh_Classpage_Item"
+        android:title="Refresh" />
+    <item
+        android:id="@+id/AboutUs_Classpage_Item"
+        android:title="About Us" />
+
+</menu>

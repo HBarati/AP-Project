@@ -6,7 +6,7 @@
         android:title="Refresh"/>
     <item
         android:id="@+id/Classes_AboutUs_Item"
-        android:title="Classes" />
+    android:title="Classes" />
     <item
         android:id="@+id/AboutUs_AboutUs_Item"
         android:title="About Us" />
