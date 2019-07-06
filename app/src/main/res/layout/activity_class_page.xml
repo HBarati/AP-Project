@@ -14,7 +14,8 @@
         android:text="Welcome To The Class"
         android:gravity="center"
         android:textSize="25dp"
-        android:textColor="#689B52"
+        android:layout_marginTop="30dp"
+        android:textColor="#030303"
         android:layout_marginBottom="450dp"/>
 
     <Button

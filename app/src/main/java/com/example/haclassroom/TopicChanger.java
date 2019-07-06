@@ -11,7 +11,7 @@ public class TopicChanger extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("Add/Delete Toics");
+        getSupportActionBar().setTitle("Add/Delete Topics");
         setContentView(R.layout.activity_topic_changer);
 
         ////////////back button
@@ -22,12 +22,14 @@ public class TopicChanger extends AppCompatActivity {
     }
 
     public void AddTopic(View view){
+        ///////ERORRR
         Toast.makeText(this, "Topic Added", Toast.LENGTH_SHORT).show();
         Intent intent19 = new Intent(TopicChanger.this, ClassWork.class);
         startActivity(intent19);
     }
 
     public void DeleteTopic(View view){
+        ////////ERORRR
         Toast.makeText(this, "Topic Deleted", Toast.LENGTH_SHORT).show();
         Intent intent20 = new Intent(TopicChanger.this, ClassWork.class);
         startActivity(intent20);

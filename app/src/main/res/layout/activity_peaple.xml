@@ -4,13 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Peaple">
 
+
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="15dp"
-        android:padding="10dp"
         android:id="@+id/PeapleList"
-        android:dividerHeight="5dp"/>
+        android:layout_width="384dp"
+        android:layout_height="643dp"
+        android:layout_margin="15dp"
+        android:dividerHeight="5dp"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="MissingConstraints">
+    </ListView>
+
 </android.support.constraint.ConstraintLayout>
