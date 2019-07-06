@@ -5,9 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Peaple extends AppCompatActivity {
+
+    List<MyPeaple>  myPeaple;
+    ListView listView;
+    PeapleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +29,27 @@ public class Peaple extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         ///////////////////////
+
+        listView = findViewById(R.id.PeapleList);
+        myPeaple = new ArrayList<>();
+
+        setData();
+        ShowThePeaple();
     }
+
+    private void setData() {
+        //////Server
+        myPeaple.add(new MyPeaple("Ali Alavi","Teacher"));
+        myPeaple.add(new MyPeaple("Ali Naghavi","Teacher"));
+        myPeaple.add(new MyPeaple("Hasan Hasani","Student"));
+        myPeaple.add(new MyPeaple("Hasan Hoseini","Student"));
+    }
+
+    private void ShowThePeaple() {
+        adapter = new PeapleAdapter(this,myPeaple);
+        listView.setAdapter((ListAdapter) adapter);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

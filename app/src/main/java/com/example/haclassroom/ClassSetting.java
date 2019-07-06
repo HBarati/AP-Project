@@ -1,10 +1,14 @@
 package com.example.haclassroom;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ClassSetting extends AppCompatActivity {
@@ -51,5 +55,24 @@ public class ClassSetting extends AppCompatActivity {
             startActivity(intent15);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ClassSetting_commentMood(View view){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final String[] strings = new String[]{"Students can post and comment",
+                                                "Students can only comment",
+                                                "Only teachers can post and comment"};
+        builder.setSingleChoiceItems(strings, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                /////Send Chois too server
+                TextView Stream = findViewById(R.id.Stream_Setting);
+                Stream.setText(strings[i]);
+            }
+        });
+        builder.setPositiveButton("OK",null);
+        builder.show();
+        builder.create().dismiss();
     }
 }

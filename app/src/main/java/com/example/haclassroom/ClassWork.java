@@ -5,11 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClassWork extends AppCompatActivity {
 
     String Mood;
+    List<MyClassWork> myClassWorks;
+    ListView listView;
+    ClassWorkAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,24 @@ public class ClassWork extends AppCompatActivity {
         }
         ///////////////////////
 
+        listView = findViewById(R.id.ClassWorkList);
+        myClassWorks = new ArrayList<>();
+
+        setData();
+        ShowTheClassWorks();
+
+    }
+
+    private void setData() {
+        //////Server
+        myClassWorks.add(new MyClassWork("class one","Topic one"));
+        myClassWorks.add(new MyClassWork("class two","Topic two"));
+        myClassWorks.add(new MyClassWork("class three","Topic three"));
+    }
+
+    private void ShowTheClassWorks() {
+        adapter = new ClassWorkAdapter(this,myClassWorks);
+        listView.setAdapter(adapter);
     }
 
     @Override

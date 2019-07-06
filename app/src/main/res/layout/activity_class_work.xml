@@ -16,4 +16,12 @@
         android:layout_marginTop="20dp"
         android:textColor="@android:color/background_dark"
         android:text="Class Name" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:id="@+id/ClassWorkList"
+        android:dividerHeight="5dp"/>
 </LinearLayout>

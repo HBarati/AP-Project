@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClassInformation"></activity>
+        <activity android:name=".ClassInformation" />
         <activity android:name=".ClassSetting" />
         <activity android:name=".Peaple" />
         <activity android:name=".ClassPage" />

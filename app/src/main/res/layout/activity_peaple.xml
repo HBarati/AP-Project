@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Peaple">
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:id="@+id/PeapleList"
+        android:dividerHeight="5dp"/>
 </android.support.constraint.ConstraintLayout>

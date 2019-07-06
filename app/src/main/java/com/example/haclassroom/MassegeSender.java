@@ -21,7 +21,7 @@ public class MassegeSender extends AsyncTask <String,Void,Void>
             @Override
             public void run() {
                 try {
-                    socket = new Socket("192.168.10.10", 7800);
+                    socket = new Socket("172.20.108.44", 8123);
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
                     dataOutputStream.writeUTF(massage);
                     dataOutputStream.flush();

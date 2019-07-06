@@ -145,11 +145,12 @@
         <TextView
             android:id="@+id/Stream_Setting"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="25sp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:textSize="17sp"
-            android:text="Dialog Mood" />
+            android:onClick="ClassSetting_commentMood"
+            android:text="Students can post and comment" />
     </LinearLayout>
 
     <TextView

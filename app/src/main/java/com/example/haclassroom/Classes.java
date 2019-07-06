@@ -1,6 +1,8 @@
 package com.example.haclassroom;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +22,7 @@ public class Classes extends AppCompatActivity {
     List<MyClasses> myClassesList;
     ListView listView;
     ClassesAdapter adapter;
+    public String Mood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class Classes extends AppCompatActivity {
     }
 
     private void setData() {
+        /////////Server
         myClassesList.add(new MyClasses("Teacher Class","T","15 student"));
         myClassesList.add(new MyClasses("Student Class","S","Ostad Ali"));
     }
@@ -92,6 +96,30 @@ public class Classes extends AppCompatActivity {
     public void Click(View view){
         Intent intent11 = new Intent(Classes.this,ClassPage.class);
         startActivity(intent11);
+    }
+
+    public void ClassButtonClick(final View view){
+        Mood = "S";
+        if (Mood.equals("T")) {
+            Intent intent16 = new Intent(Classes.this, ClassSetting.class);
+            startActivity(intent16);
+        }
+        if (Mood.equals("S")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Delete Class");
+            builder.setMessage("are you sure?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    /////EROERRR
+                    myClassesList.remove(this);
+                    adapter.notifyDataSetChanged();
+                    ////////////
+                }
+            });
+            builder.setNeutralButton("Cancle",null);
+            builder.show();
+        }
     }
 }
 
