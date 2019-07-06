@@ -32,6 +32,7 @@ public class ClassSetting extends AppCompatActivity {
                 return false;
             }
         }).setShowAsAction(1);
+        
         getMenuInflater().inflate(R.menu.classpage_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
