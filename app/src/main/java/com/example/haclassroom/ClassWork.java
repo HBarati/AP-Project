@@ -1,11 +1,15 @@
 package com.example.haclassroom;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,6 +21,12 @@ public class ClassWork extends AppCompatActivity {
     List<MyClassWork> myClassWorks;
     ListView listView;
     ClassWorkAdapter adapter;
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,5 +104,38 @@ public class ClassWork extends AppCompatActivity {
             startActivity(intent15);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void TopicChange(View view){
+        Intent intent18 = new Intent(ClassWork.this, TopicChanger.class);
+        startActivity(intent18);
+    }
+
+    public void jozeiat(View view){
+        Intent intent21 = new Intent(ClassWork.this, Jozeiat.class);
+        startActivity(intent21);
+    }
+
+    public void fab(View view){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final String[] strings = new String[]{"Question","Topic"};
+        builder.setSingleChoiceItems(strings, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                /////Send Chois too server
+                if (strings[i]=="Question") {
+                    Intent intent22 = new Intent(ClassWork.this, NewQuestion.class);
+                    startActivity(intent22);
+                    builder.create().dismiss();
+                }
+                if (strings[i]=="Topic"){
+                    Intent intent23 = new Intent(ClassWork.this, TopicChanger.class);
+                    startActivity(intent23);
+                    builder.create().dismiss();
+                }
+            }
+        });
+        builder.show();
+        builder.create().dismiss();
     }
 }

@@ -17,11 +17,31 @@
         android:textColor="@android:color/background_dark"
         android:text="Class Name" />
 
+    <Button
+        android:id="@+id/Topic"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+        android:onClick="TopicChange"
+        android:text="Add/Delete Topic"
+        android:textSize="10sp" />
+
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="520dp"
         android:layout_margin="15dp"
         android:padding="10dp"
         android:id="@+id/ClassWorkList"
-        android:dividerHeight="5dp"/>
+        android:dividerHeight="5dp">
+
+    </ListView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/FAB_main"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="330dp"
+        android:onClick="fab"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_compass" >
+    </android.support.design.widget.FloatingActionButton>
 </LinearLayout>
